@@ -1,4 +1,3 @@
-
 /*
   Quick and dirty functions that make serial communications work.
 
