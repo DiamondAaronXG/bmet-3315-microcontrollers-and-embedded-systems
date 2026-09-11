@@ -17,11 +17,11 @@ int main(void) {
 
     PORTB = 0b00100000; // Same as above change
              /* Turn on first LED bit/pin in PORTB */
-    _delay_ms(1000);                                          
+    _delay_ms(250);                                          
 
     PORTB = 0b00000000; // Same as above change 
             /* Turn off all B pins, including LED */
-    _delay_ms(1000);                                           
+    _delay_ms(250);                                           
 
   }                                                
   return 0;  
