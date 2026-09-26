@@ -3,3 +3,10 @@ All code for finished labs in my microcontrollers class at BCIT in the BMET prog
 
 Much of this code it not built from scratch. It was built off of code from this AVR repo.
 https://github.com/hexagon5un/AVR-Programming/tree/master
+
+Everything was built on a simple breadboard.
+
+Microcontroller: ATMega328p
+FET: 2N7000
+Programmer: Sparkfun AVR Pocket Programmer
+
