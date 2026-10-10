@@ -8,7 +8,7 @@
 
 // -------- USART Definitions --------- //
 #define BAUD 9600
-#define MYUBRR F_CPU/16/BAUD-1
+
 
 // -------- Function Prototypes --------- //
 static inline void initADC0(void);
@@ -21,15 +21,16 @@ void printWord(uint16_t word);
 
 // -------- Functions --------- //
 static inline void initADC0(void) {
-  ADMUX |= (1 << REFS0);                  /* reference voltage on AVCC /
-  ADCSRA |= (1 << ADPS2);                 / ADC clock prescaler /16 /
-  ADCSRA |= (1 << ADEN);                  / enable ADC */
+  ADMUX |= (1 << REFS0);                  /* reference voltage on AVCC */
+  ADCSRA |= (1 << ADPS2);                 /* ADC clock prescaler /16 */
+  ADCSRA |= (1 << ADEN);                  /* enable ADC */
 }
 void initUSART(void) {
-  UBRR0H = (MYUBRR >> 8);
-  UBRR0L = MYUBRR;
-  UCSR0B = (1 << TXEN0);                  /* Enable transmitter /
-  UCSR0C = (1 << UCSZ01) | (1 << UCSZ00); / 8-bit data /
+    UCSR0A = (1 << U2X0);
+    UBRR0H = 0;
+    UBRR0L = (F_CPU / (8UL * BAUD)) - 1;
+    UCSR0B = (1 << TXEN0);
+    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
 }
 
 void transmitByte(uint8_t data) {
